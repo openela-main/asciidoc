@@ -1,0 +1,109 @@
+diff --git a/asciidoc-8.6.8-music-noship.patch b/asciidoc-8.6.8-music-noship.patch
+new file mode 100644
+index 0000000..c0fc89b
+--- /dev/null
++++ b/asciidoc-8.6.8-music-noship.patch
+@@ -0,0 +1,103 @@
++diff -uNr asciidoc-8.6.8-orig/examples/website/build-website.sh asciidoc-8.6.8/examples/website/build-website.sh
++--- asciidoc-8.6.8-orig/examples/website/build-website.sh	2013-09-13 10:46:05.486227851 -0400
+++++ asciidoc-8.6.8/examples/website/build-website.sh	2013-09-13 10:50:35.036112150 -0400
++@@ -20,6 +20,5 @@
++ $ASCIIDOC_HTML README-website.txt
++ $ASCIIDOC_HTML support.txt
++ $ASCIIDOC_HTML source-highlight-filter.txt
++-$ASCIIDOC_HTML music-filter.txt
++ $ASCIIDOC_HTML a2x.1.txt
++ $ASCIIDOC_HTML asciimath.txt
++diff -uNr asciidoc-8.6.8-orig/tests/data/filters-test.txt asciidoc-8.6.8/tests/data/filters-test.txt
++--- asciidoc-8.6.8-orig/tests/data/filters-test.txt	2013-09-13 10:46:05.496229029 -0400
+++++ asciidoc-8.6.8/tests/data/filters-test.txt	2013-09-13 10:51:12.370110678 -0400
++@@ -54,37 +54,3 @@
++ ---------------------------------------------------------------------
++ 
++ 
++-== Music filter
++-
++-.A tune generated from ABC notation
++-[music,music1.png]
++----------------------------------------------------------------------
++-T:The Butterfly
++-R:slip jig
++-C:Tommy Potts
++-H:Fiddle player Tommy Potts made this tune from two older slip jigs,
++-H:one of which is called "Skin the Peelers" in Roche's collection.
++-D:Bothy Band: 1975.
++-M:9/8
++-K:Em
++-vB2(E G2)(E F3)|B2(E G2)(E F)ED|vB2(E G2)(E F3)|(B2d) d2(uB A)FD:|
++-|:(vB2c) (e2f) g3|(uB2d) (g2e) (dBA)|(B2c) (e2f) g2(ua|b2a) (g2e) (dBA):|
++-|:~B3 (B2A) G2A|~B3 BA(uB d)BA|~B3 (B2A) G2(A|B2d) (g2e) (dBA):|
++----------------------------------------------------------------------
++-
++-<<X1,Link to following fragment>>.
++-
++-[[X1]]
++-.A fragment generated from LilyPond source
++-["music", "music2.png", "ly", link="music2.ly"]
++----------------------------------------------------------------------
++-\version "2.10.0"
++-\paper {
++-  ragged-right = ##t
++-}
++-{
++-  \time 3/4
++-  \clef bass
++-  c2 e4 g2. f4 e d c2 r4
++-}
++----------------------------------------------------------------------
++diff -uNr asciidoc-8.6.8-orig/tests/data/open-block-test.txt asciidoc-8.6.8/tests/data/open-block-test.txt
++--- asciidoc-8.6.8-orig/tests/data/open-block-test.txt	2013-09-13 10:46:05.498229242 -0400
+++++ asciidoc-8.6.8/tests/data/open-block-test.txt	2013-09-13 10:51:28.746109565 -0400
++@@ -103,15 +103,3 @@
++ digraph G { rankdir=LR; Graphviz->AsciiDoc->HTML}
++ --
++ 
++-[music]
++---
++-\version "2.10.0"
++-\paper {
++-  ragged-right = ##t
++-}
++-{
++-  \time 3/4
++-  \clef bass
++-  c2 e4 g2. f4 e d c2 r4
++-}
++---
++diff -uNr asciidoc-8.6.8-orig/tests/data/testcases.txt asciidoc-8.6.8/tests/data/testcases.txt
++--- asciidoc-8.6.8-orig/tests/data/testcases.txt	2013-09-13 10:46:05.498229242 -0400
+++++ asciidoc-8.6.8/tests/data/testcases.txt	2013-09-13 10:50:35.037112150 -0400
++@@ -310,7 +310,7 @@
++ 
++ // Images and icons directories.
++ :imagesdir: ../../doc
++-image::music2.png[]
+++// image::music2.png[]
++ 
++ :icons:
++ :iconsdir:  ../../images/icons
++diff -uNr asciidoc-8.6.8-orig/doc/slidy-example.txt asciidoc-8.6.8/doc/slidy-example.txt
++--- asciidoc-8.6.8-orig/doc/slidy-example.txt	2013-09-13 10:46:05.484227592 -0400
+++++ asciidoc-8.6.8/doc/slidy-example.txt	2013-09-13 12:30:43.225757230 -0400
++@@ -151,17 +151,3 @@
++     else:
++         return word
++ ---------------------------------------------------------------------
++-
++-[music]
++-.Music
++----------------------------------------------------------------------
++-\version "2.10.0"
++-\paper {
++-  ragged-right = ##t
++-}
++-{
++-  \time 3/4
++-  \clef bass
++-  c2 e4 g2. f4 e d c2 r4
++-}
++----------------------------------------------------------------------
