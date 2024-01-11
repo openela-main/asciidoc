@@ -1,0 +1,26 @@
+diff -urNp a/Makefile.in b/Makefile.in
+--- a/Makefile.in	2018-08-14 14:12:46.853533879 +0200
++++ b/Makefile.in	2018-08-14 14:14:03.522336821 +0200
+@@ -45,11 +45,6 @@ graphvizfilterdir = $(filtersdir)/graphv
+ graphvizfilterconf = filters/graphviz/graphviz-filter.conf
+ graphvizfilterconfdir = $(filtersdir)/graphviz
+ 
+-musicfilter = filters/music/music2png.py
+-musicfilterdir = $(filtersdir)/music
+-musicfilterconf = filters/music/music-filter.conf
+-musicfilterconfdir = $(filtersdir)/music
+-
+ sourcefilterconf = filters/source/source-highlight-filter.conf
+ sourcefilterconfdir = $(filtersdir)/source
+ 
+@@ -86,8 +81,8 @@ iconsdir = $(ASCIIDOCCONF)/images/icons
+ 
+ doc = $(wildcard README*) $(wildcard BUGS*) $(wildcard INSTALL*) $(wildcard CHANGELOG*)
+ 
+-DATATARGETS = manp conf docbook dblatex css js callouts icons codefilterconf musicfilterconf sourcefilterconf graphvizfilterconf latexfilterconf flasktheme volnitskytheme
+-PROGTARGETS = prog codefilter musicfilter graphvizfilter latexfilter
++DATATARGETS = manp conf docbook dblatex css js callouts icons codefilterconf sourcefilterconf graphvizfilterconf latexfilterconf flasktheme volnitskytheme
++PROGTARGETS = prog codefilter graphvizfilter latexfilter
+ TARGETS = $(DATATARGETS) $(PROGTARGETS) doc
+ 
+ INSTDIRS = $(TARGETS:%=%dir)
